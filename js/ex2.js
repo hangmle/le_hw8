@@ -48,11 +48,13 @@ for (i=0; i<3; i++) {
 
 
 
-// fetch("https://api.github.com/users/USERNAME")
-//   .then(response => response.text())
-//   .then(users => {
-//     console.log(users);
-//   })
-//   .catch(console.log("ERROR!"))
+fetch("https://api.github.com/users/USERNAME")
+  .then(response => response.text())
+  // .then(users => {
+  //   console.log(users);
+  // })
+  .catch(err => {
+    console.error(err.message);
+  })
 
 
