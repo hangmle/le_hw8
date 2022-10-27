@@ -148,7 +148,6 @@ document.getElementById("myForm").appendChild(buttonPara);
 
 
 
-
 // check checkbox
 document.getElementById("promo").addEventListener("change", e => {
   console.log(`Promotion: ${e.target.checked}`);

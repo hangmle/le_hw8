@@ -2,23 +2,23 @@
 fetch("https://raw.githubusercontent.com/bpesquet/thejsway/master/resources/paintings.json")
   .then(response => response.json())
   .then(paintings => {
-    console.log(paintings);
+    // console.log(paintings);
     paintings.forEach(painting => {
-      console.log(painting)
-    });
-    for (let i=0; i<paintings.length; i++) {
+      // console.log(painting);
       const rowEl = document.createElement("tr");
-      for (let x=0; x<3; x++) {
+      for (let i = 0; i < 3; i++) {
         const tdEl = document.createElement("td");
-        const cellText = document.createTextNode(`cell in row ${i} column ${x}`);
-        tdEl.appendChild(cellText);
         rowEl.appendChild(tdEl);
       }
       document.getElementById("paintings").appendChild(rowEl);
-    };
-    // console.log(document.getElementById("paintings").rows[0].cells.length);
+    });
+    for (i=0; i<paintings.length; i++) {
+      document.getElementById("paintings").rows[i+1].cells[0].innerText = paintings[i].name;
+      document.getElementById("paintings").rows[i+1].cells[1].innerText = paintings[i].year;
+      document.getElementById("paintings").rows[i+1].cells[2].innerText = paintings[i].artist;
+    }
+    // console.log(document.getElementById("paintings").rows[1].cells[0]);
   })
-  .catch(err => {
-    console.error(err.message);
-  })
-
+  .catch (err => {
+  console.log(err.message);
+})
