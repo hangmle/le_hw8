@@ -2,8 +2,6 @@
 fetch("https://api.github.com/users/bpesquet")
   .then(response => response.json())
   .then(result => {
-    console.log(result.login);
-
     // create h2
     const h2 = document.createElement("h2");
     h2.textContent = "Information about a GitHub user"

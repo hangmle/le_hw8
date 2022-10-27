@@ -61,7 +61,7 @@ aLabel.innerText = "Payment Type:";
 pmtPara.appendChild(aLabel);
 pmtPara.appendChild(br);
 
-for (i=0; i<payments.length; i++) {
+for (i = 0; i < payments.length; i++) {
   const br = document.createElement("br");
   const pmtInp = document.createElement("input");
   pmtInp.type = "radio";
@@ -74,7 +74,7 @@ for (i=0; i<payments.length; i++) {
 }
 document.getElementById("myForm").appendChild(pmtPara);
 
-for (j=0; j<payments.length; j++) {
+for (j = 0; j < payments.length; j++) {
   document.getElementsByName("pmtDesc")[j].innerText = payments[j].value;
   document.getElementsByName("payment")[j].value = payments[j].id;
 }
@@ -118,7 +118,7 @@ const locaLabel = document.createElement("label");
 locaLabel.innerText = "Preferred Location: ";
 const select = document.createElement("select");
 select.name = "location";
-for (i=0; i<locations.length; i++) {
+for (i = 0; i < locations.length; i++) {
   const selectOpt = document.createElement("option");
   selectOpt.value = locations[i].id;
   selectOpt.textContent = locations[i].value;
@@ -170,22 +170,28 @@ formElement.addEventListener("submit", e => {
   console.log(`Username: ${e.target.elements.name.value}, email: ${e.target.elements.email.value}, payment: ${e.target.elements.payment.value}, promotion: ${e.target.elements.promotion.value}, location: ${e.target.elements.location.value}`)
 
 
-  // show key and value in console -> same as lines 202, 203
+  // show key and value in console -> same as lines 205-206
   const formData = new FormData(e.target);
   formData.forEach((val, key) => {
     console.log(`key: ${key}, val: ${val}`);
   });
 
+  // table title
+  const title = document.createElement("p");
+  title.innerText = "Form Data Entered";
+  title.style.fontWeight = "bold";
+  document.getElementById("myForm").appendChild(title);
+
   // create table
   const table = document.createElement("table");
   table.id = "table";
-  for (x=0; x<2; x++) {
+  for (x = 0; x < 2; x++) {
     const thEl = document.createElement("th");
     table.appendChild(thEl);
   }
-  for (i=0; i<5; i++) {
+  for (i = 0; i < 5; i++) {
     const rowEl = document.createElement("tr");
-    for (j=0; j<2; j++) {
+    for (j = 0; j < 2; j++) {
       const tdEl = document.createElement("td");
       rowEl.appendChild(tdEl);
     }
@@ -196,12 +202,13 @@ formElement.addEventListener("submit", e => {
   document.getElementsByTagName("th")[0].textContent = "Key";
   document.getElementsByTagName("th")[1].textContent = "Value";
 
-  for ([key, val] of formData.entries()) {
-    console.log(`key: ${key}, value: ${val}`);
-    // for (i=0; i<key.length; i++) {
-    //   console.log(document.getElementById("table").rows[1].cells.length);
-    // }
-  }
+  // for ([key, val] of formData.entries()) {
+  //   console.log(`key: ${key}, value: ${val}`);
+  //   // console.log(document.getElementById("table").rows[1].cells[0]);
+  // }
+
+  // console.log(document.getElementsByTagName("td")[3]);
+  // // for (i = 0; i < 10; i + 2) {
+  // //   document.getElementsByTagName("td")[i].innerText = FormData.keys();
+  // // }
 })
-
-
