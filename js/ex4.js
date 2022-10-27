@@ -37,19 +37,19 @@ emailPara.appendChild(emailInp);
 // payment
 const payments = [
   {
-    id: "CS",
+    id: "cs",
     value: "Cash"
   },
   {
-    id: "CC",
+    id: "cc",
     value: "Credit Card"
   },
   {
-    id: "GP",
+    id: "gp",
     value: "Google Pay"
   },
   {
-    id: "AP",
+    id: "ap",
     value: "Apple Pay"
   }
 ];
@@ -64,6 +64,7 @@ pmtPara.appendChild(br);
 for (i = 0; i < payments.length; i++) {
   const br = document.createElement("br");
   const pmtInp = document.createElement("input");
+  pmtInp.id = "pmt";
   pmtInp.type = "radio";
   pmtInp.name = "payment";
   const pmtLabel = document.createElement("label");
@@ -96,19 +97,19 @@ document.getElementById("myForm").appendChild(promoPara);
 // location
 const locations = [
   {
-    id: "LA",
+    id: "la",
     value: "Los Angeles"
   },
   {
-    id: "OC",
+    id: "oc",
     value: "Orange County"
   },
   {
-    id: "RS",
+    id: "rs",
     value: "Riverside"
   },
   {
-    id: "SD",
+    id: "sd",
     value: "San Diego"
   }
 ];
@@ -117,6 +118,7 @@ const locaPara = document.createElement("p");
 const locaLabel = document.createElement("label");
 locaLabel.innerText = "Preferred Location: ";
 const select = document.createElement("select");
+select.id = "loca";
 select.name = "location";
 for (i = 0; i < locations.length; i++) {
   const selectOpt = document.createElement("option");
@@ -170,7 +172,7 @@ formElement.addEventListener("submit", e => {
   console.log(`Username: ${e.target.elements.name.value}, email: ${e.target.elements.email.value}, payment: ${e.target.elements.payment.value}, promotion: ${e.target.elements.promotion.value}, location: ${e.target.elements.location.value}`)
 
 
-  // show key and value in console -> same as lines 205-206
+  // show key and value in console -> same as lines 220-221
   const formData = new FormData(e.target);
   formData.forEach((val, key) => {
     console.log(`key: ${key}, val: ${val}`);
@@ -201,6 +203,19 @@ formElement.addEventListener("submit", e => {
   document.getElementById("myForm").appendChild(table);
   document.getElementsByTagName("th")[0].textContent = "Key";
   document.getElementsByTagName("th")[1].textContent = "Value";
+
+  document.getElementById("table").rows[0].cells[0].innerText = nameInp.name;
+  document.getElementById("table").rows[1].cells[0].innerText = emailInp.name;
+  document.getElementById("table").rows[2].cells[0].innerText = document.getElementById("pmt").name;
+  document.getElementById("table").rows[3].cells[0].innerText = promoInp.name;
+  document.getElementById("table").rows[4].cells[0].innerText = document.getElementById("loca").name;
+
+  document.getElementById("table").rows[0].cells[1].innerText = e.target.elements.name.value;
+  document.getElementById("table").rows[1].cells[1].innerText = e.target.elements.email.value;
+  document.getElementById("table").rows[2].cells[1].innerText = e.target.elements.payment.value;
+  document.getElementById("table").rows[3].cells[1].innerText = e.target.elements.promotion.value;
+  document.getElementById("table").rows[4].cells[1].innerText = e.target.elements.location.value;
+
 
   // for ([key, val] of formData.entries()) {
   //   console.log(`key: ${key}, value: ${val}`);
